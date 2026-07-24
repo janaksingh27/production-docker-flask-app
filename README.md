@@ -1,22 +1,29 @@
 # Production-Ready Dockerized Flask Application
 
-A lightweight Flask application containerized using Docker with production-focused practices.
+A production-focused Flask application containerized using Docker and optimized with advanced Docker best practices.
 
-## Features
+## 🚀 Features
 
-- Lightweight Python 3.12-slim base image
+- Multi-stage Docker build
+- Python 3.12 slim base image
 - Docker image optimization
-- pip cache disabled using `--no-cache-dir`
-- Container healthcheck
+- `.dockerignore` implementation
+- Environment variable configuration
+- Docker HEALTHCHECK
+- Non-root user execution
 - CPU and memory resource limits
-- Non-root user for better security
-- Docker logs and container troubleshooting practice
+- Container restart policy
+- Docker logs and troubleshooting
+- Git version control
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 .
-├── app.py
-├── requirements.txt
+├── .dockerignore
+├── .gitignore
 ├── Dockerfile
-└── .gitignore
+├── Dockerfile.single-stage
+├── README.md
+├── app.py
+└── requirements.txt
