@@ -2,9 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+
+        stage('Git Checkout') {
             steps {
-                echo 'Hello Janak! Jenkins Pipeline is working.'
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t janaksingh/production-docker-flask-app:v1 .'
+            }
+        }
+
+        stage('Success') {
+            steps {
+                echo 'Docker Image Build Successful!'
             }
         }
     }
