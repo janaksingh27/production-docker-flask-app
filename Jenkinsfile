@@ -37,9 +37,26 @@ pipeline {
             }
         }
 
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker stop production-app || true
+                docker rm production-app || true
+
+                docker pull $IMAGE_NAME
+
+                docker run -d \
+                  --name production-app \
+                  -p 5000:5000 \
+                  --restart unless-stopped \
+                  $IMAGE_NAME
+                '''
+            }
+        }
+
         stage('Success') {
             steps {
-                echo 'Docker Image Built and Pushed Successfully!'
+                echo 'Application Deployed Successfully!'
             }
         }
     }
